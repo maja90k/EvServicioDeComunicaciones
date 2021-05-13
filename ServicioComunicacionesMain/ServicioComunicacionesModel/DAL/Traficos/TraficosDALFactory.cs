@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ServicioComunicacionesModel.DAL.Traficos;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,5 +9,9 @@ namespace ServicioComunicacionesModel.DAL
 {
     public class TraficosDALFactory
     {
+        public static ITraficosDAL CreateDal()
+        {
+            return TraficosDALArchivos.GetInstancia();
+        }
     }
 }

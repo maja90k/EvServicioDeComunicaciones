@@ -5,11 +5,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ServicioComunicacionesModel.DAL.Lecturas
+namespace ServicioComunicacionesModel.DAL.Traficos
 {
-    public interface ILecturasDAL
+    public interface ITraficosDAL
     {
-        void Save(Lectura l);
-        List<Lectura> GetAll();
+        void Save(Trafico t);
+        List<Trafico> GetAll();
     }
 }

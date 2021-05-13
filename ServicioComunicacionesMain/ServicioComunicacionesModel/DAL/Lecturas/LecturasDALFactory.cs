@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace ServicioComunicacionesModel.DAL.Lecturas
 {
-    class LecturasDALFactory
+    public class LecturasDALFactory
     {
+        public static ILecturasDAL CreateDal()
+        {
+            return LecturasDALArchivos.GetInstancia();
+        }
     }
 }

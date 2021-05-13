@@ -41,13 +41,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DAL\TraficosDALArchivos.cs" />
-    <Compile Include="DAL\TraficosDALFactory.cs" />
-    <Compile Include="DAL\ITraficosDAL.cs" />
+    <Compile Include="DAL\Consumos\ConsumosDALArchivos.cs" />
+    <Compile Include="DAL\Consumos\ConsumosDALFactory.cs" />
+    <Compile Include="DAL\Consumos\IConsumosDAL.cs" />
+    <Compile Include="DAL\Lecturas\ILecturasDAL.cs" />
+    <Compile Include="DAL\Lecturas\LecturasDALArchivos.cs" />
+    <Compile Include="DAL\Lecturas\LecturasDALFactory.cs" />
+    <Compile Include="DAL\Traficos\ITraficosDAL.cs" />
+    <Compile Include="DAL\Traficos\TraficosDALArchivos.cs" />
+    <Compile Include="DAL\Traficos\TraficosDALFactory.cs" />
+    <Compile Include="DTO\Lectura.cs" />
+    <Compile Include="DTO\Consumo.cs" />
+    <Compile Include="DTO\Trafico.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="DTO\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

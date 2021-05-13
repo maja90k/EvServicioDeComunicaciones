@@ -6,7 +6,21 @@ using System.Threading.Tasks;
 
 namespace ServicioComunicacionesModel.DTO
 {
-    class Lectura
+    public class Lectura
     {
+        private int idLectura;
+        private DateTime fecha;
+         
+        private String valor;
+        //tipo de vehiculo electricio o dual
+        private int tipo;
+        //unidad de medida KwH 
+        private String unme;
+
+        public DateTime Fecha { get => fecha; set => fecha = value; }
+        public string Valor { get => valor; set => valor = value; }
+        public int Tipo { get => tipo; set => tipo = value; }
+        public string Unme { get => unme; set => unme = value; }
+        public int IdLectura { get => idLectura; set => idLectura = value; }
     }
 }
