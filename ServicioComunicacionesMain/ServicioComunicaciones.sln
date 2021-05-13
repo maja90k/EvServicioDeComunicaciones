@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServicioComunicacionesApp",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServicioComunicacionesModel", "ServicioComunicacionesModel\ServicioComunicacionesModel.csproj", "{FD213874-0AC6-4F87-8A27-DA6CBB23A039}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SocketsUtils", "SocketsUtils\SocketsUtils.csproj", "{3A916EFF-B125-4A6C-909F-250A1A5C1B9C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{FD213874-0AC6-4F87-8A27-DA6CBB23A039}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FD213874-0AC6-4F87-8A27-DA6CBB23A039}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FD213874-0AC6-4F87-8A27-DA6CBB23A039}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3A916EFF-B125-4A6C-909F-250A1A5C1B9C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3A916EFF-B125-4A6C-909F-250A1A5C1B9C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3A916EFF-B125-4A6C-909F-250A1A5C1B9C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3A916EFF-B125-4A6C-909F-250A1A5C1B9C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

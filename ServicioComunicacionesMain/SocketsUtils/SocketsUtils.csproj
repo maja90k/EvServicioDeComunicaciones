@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{C06EDE05-E864-4A3A-8120-E3079E6D697E}</ProjectGuid>
+    <ProjectGuid>{3A916EFF-B125-4A6C-909F-250A1A5C1B9C}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ServicioComunicacionesMain</RootNamespace>
-    <AssemblyName>ServicioComunicacionesMain</AssemblyName>
+    <RootNamespace>SocketsUtils</RootNamespace>
+    <AssemblyName>SocketsUtils</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -41,17 +41,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Hilos\HiloMedidor.cs" />
-    <Compile Include="Hilos\HiloServer.cs" />
-    <Compile Include="Parciales\Program.cs" />
-    <Compile Include="Program.cs" />
+    <Compile Include="MedidorSocket.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\ServicioComunicacionesModel\ServicioComunicacionesModel.csproj">
-      <Project>{fd213874-0ac6-4f87-8a27-da6cbb23a039}</Project>
-      <Name>ServicioComunicacionesModel</Name>
-    </ProjectReference>
+    <Compile Include="ServerSocket.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

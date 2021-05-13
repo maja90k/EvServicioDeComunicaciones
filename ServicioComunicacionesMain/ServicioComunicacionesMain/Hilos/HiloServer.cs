@@ -4,13 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ServicioComunicacionesApp
+namespace ServicioComunicacionesApp.Hilos
 {
-    public partial class Program
+    public class HiloServer
     {
-        static void Main(String[] args)
-        {
-
-        }
     }
 }

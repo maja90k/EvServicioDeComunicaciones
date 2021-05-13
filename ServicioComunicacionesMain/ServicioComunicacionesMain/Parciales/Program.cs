@@ -8,9 +8,6 @@ namespace ServicioComunicacionesApp
 {
     public partial class Program
     {
-        static void Main(String[] args)
-        {
 
-        }
     }
 }
