@@ -8,5 +8,6 @@ namespace ServicioComunicacionesApp.Hilos
 {
     public class HiloMedidor
     {
+
     }
 }
