@@ -38,7 +38,7 @@ namespace SocketUtils
 
         }
 
-        public MedidorSocket ObtenerCliente()
+        public MedidorSocket ObtenerMedidor()
         {
             try
             {          

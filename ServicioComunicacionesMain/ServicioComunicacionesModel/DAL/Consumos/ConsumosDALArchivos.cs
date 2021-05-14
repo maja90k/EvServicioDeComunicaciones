@@ -8,18 +8,14 @@ namespace ServicioComunicacionesModel.DAL.Consumos
 {
     class ConsumosDALArchivos
     {
-        //
-        //
-        //
+        
         private ConsumosDALArchivos()
         {
 
         }
-        //
-        //
+        
         private static IConsumosDAL instancia;
-        //
-        //
+      
         public static IConsumosDAL GetInstancia()
         {
             if (instancia == null)

@@ -52,6 +52,10 @@
       <Project>{fd213874-0ac6-4f87-8a27-da6cbb23a039}</Project>
       <Name>ServicioComunicacionesModel</Name>
     </ProjectReference>
+    <ProjectReference Include="..\SocketsUtils\SocketsUtils.csproj">
+      <Project>{3A916EFF-B125-4A6C-909F-250A1A5C1B9C}</Project>
+      <Name>SocketsUtils</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

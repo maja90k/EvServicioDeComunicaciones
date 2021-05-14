@@ -61,5 +61,10 @@ namespace ServicioComunicacionesModel.DAL
                 
             }
         }
+
+        public void Save(Trafico t)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

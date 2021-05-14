@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace SocketsUtils
 {
+    //el medidor es el cliente.
     public class MedidorSocket
     {
         private Socket comMedidor;

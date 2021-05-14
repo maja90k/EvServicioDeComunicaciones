@@ -8,8 +8,8 @@ namespace ServicioComunicacionesApp
 {
     public partial class Program
     {
-        //Servicio de comunicacion 2.-
-        //aca se escribe en json?
+
+       
 
 
 
