@@ -9,13 +9,13 @@ using System.Threading.Tasks;
 namespace SocketsUtils
 {
     //el medidor es el cliente.
-    public class MedidorSocket
+    public class MedidorConsumoSocket
     {
         private Socket comMedidor;
         private StreamReader reader;
         private StreamWriter writer;
 
-        public MedidorSocket(Socket comMedidor)
+        public MedidorConsumoSocket(Socket comMedidor)
         {
             this.comMedidor = comMedidor;
             Stream stream = new NetworkStream(this.comMedidor);

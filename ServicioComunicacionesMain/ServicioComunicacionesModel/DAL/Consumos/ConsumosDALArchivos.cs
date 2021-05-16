@@ -1,14 +1,17 @@
-﻿using System;
+﻿using ServicioComunicacionesModel.DTO;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace ServicioComunicacionesModel.DAL.Consumos
 {
-    class ConsumosDALArchivos
+    public class ConsumosDALArchivos : IConsumosDAL
     {
-        
+        private static List<Consumo> medidoresConsumos = new List<Consumo>();
+
         private ConsumosDALArchivos()
         {
 
@@ -21,6 +24,62 @@ namespace ServicioComunicacionesModel.DAL.Consumos
             if (instancia == null)
                 instancia = new ConsumosDALArchivos();
             return instancia;
+        }
+
+        private string arconsumo = Directory.GetCurrentDirectory() + Path.DirectorySeparatorChar + "consumos.txt";
+
+        private Consumo FindByNroMedidor(string nroMedidor)
+        {
+            return medidoresConsumos.Find(c => c.NroMedidor == nroMedidor);
+        }
+
+        public List<Consumo> GetAll()
+        {
+            List<Consumo> consumos = new List<Consumo>();
+            try
+            {
+                using(StreamReader reader = new StreamReader(arconsumo))
+                {
+                    string mensj = null;
+                    do
+                    {
+                        mensj = reader.ReadLine();
+                        if (mensj != null)
+                        {
+                            String[] mensjArray = mensj.Split('|');
+                            Consumo c = new Consumo()
+                            {
+                               //el dato fecha se esta capturando como string y no como datetime
+                               Fecha = mensjArray[0],
+                               NroMedidor = mensjArray[1],
+                               Tipo = mensjArray[3]
+                            };
+                            consumos.Add(c);
+                        }
+
+                    } while (mensj != null);
+                }
+            }catch (IOException ex)
+            {
+
+            }
+
+            return consumos;
+        }
+
+        public void Save(Consumo c)
+        {
+            try
+            {
+                using(StreamWriter writer = new StreamWriter(arconsumo, true))
+                {
+                    writer.WriteLine(c);
+                    writer.Flush();
+                }
+            }catch (IOException ex)
+            {
+
+            }
         }
     }
 }

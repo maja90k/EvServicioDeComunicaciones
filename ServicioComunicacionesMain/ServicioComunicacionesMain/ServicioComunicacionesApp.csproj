@@ -32,6 +32,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -41,7 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Hilos\HiloMedidor.cs" />
+    <Compile Include="Hilos\HiloMedidorConsumo.cs" />
     <Compile Include="Hilos\HiloServer.cs" />
     <Compile Include="Parciales\Program.cs" />
     <Compile Include="Program.cs" />
@@ -56,6 +57,9 @@
       <Project>{3A916EFF-B125-4A6C-909F-250A1A5C1B9C}</Project>
       <Name>SocketsUtils</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

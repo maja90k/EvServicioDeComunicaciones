@@ -38,11 +38,11 @@ namespace SocketUtils
 
         }
 
-        public MedidorSocket ObtenerMedidor()
+        public MedidorConsumoSocket ObtenerMedidor()
         {
             try
             {          
-                return new MedidorSocket(this.servidor.Accept());
+                return new MedidorConsumoSocket(this.servidor.Accept());
             }catch(Exception ex)
             {
                 return null;

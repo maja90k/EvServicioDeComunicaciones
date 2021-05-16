@@ -34,7 +34,7 @@ namespace ServicioComunicacionesApp.Hilos
                 while (true)
                 {
                     Console.WriteLine("Esperando Clientes");
-                    MedidorSocket medidorSocket = server.ObtenerMedidor();
+                    MedidorConsumoSocket medidorSocket = server.ObtenerMedidor();
                     HiloMedidor hiloMedidor= new HiloMedidor(medidorSocket);
                     Thread t = new Thread(new ThreadStart(hiloMedidor.Ejecutar));
                     t.IsBackground = true;
