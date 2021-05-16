@@ -52,7 +52,7 @@ namespace ServicioComunicacionesModel.DAL.Consumos
                                //el dato fecha se esta capturando como string y no como datetime
                                Fecha = mensjArray[0],
                                NroMedidor = mensjArray[1],
-                               Tipo = mensjArray[3]
+                               Tipo = mensjArray[2]
                             };
                             consumos.Add(c);
                         }

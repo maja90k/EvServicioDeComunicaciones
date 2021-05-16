@@ -21,5 +21,15 @@ namespace ServicioComunicacionesModel.DTO
         public string NroMedidor { get => nroMedidor; set => nroMedidor = value; }
         public string Fecha { get => fecha; set => fecha = value; }
         public string Tipo { get => tipo; set => tipo = value; }
+
+        public override string ToString()
+        {
+            return Fecha + "|" + NroMedidor + "|" + Tipo;
+        }
+
+        public static implicit operator Consumo(Consumo v)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

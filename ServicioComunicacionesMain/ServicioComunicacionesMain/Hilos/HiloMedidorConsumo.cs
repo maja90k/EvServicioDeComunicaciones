@@ -32,10 +32,9 @@ namespace ServicioComunicacionesApp.Hilos
                 string fechaText = Console.ReadLine().Trim();
                 if (!DateTime.TryParse(fechaText, out fecha))
                 {
-                    fecha = ;
-                    Console.WriteLine("Prioridad incorrecta");
+                    
                 }
-            } while (fecha < DateTime.Empty);
+            } while (fecha != DateTime.Now);
 
             do
             {
@@ -43,12 +42,12 @@ namespace ServicioComunicacionesApp.Hilos
                 nro_medidor = Console.ReadLine().Trim();
                 if (nro_medidor.Length != 3)
                 {
-                    Console.WriteLine("El nro de serie debe de largo 7");
+                    Console.WriteLine("El nro ");
                     nro_medidor = String.Empty;
                 }
                 else if (dal.FindByNroMedidor(nro_medidor) != null)
                 {
-                    Console.WriteLine("Elterminator ya existe");
+                    Console.WriteLine("");
                     nro_medidor = string.Empty;
                 }
             } while (nro_medidor == string.Empty);

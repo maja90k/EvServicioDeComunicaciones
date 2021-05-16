@@ -11,5 +11,6 @@ namespace ServicioComunicacionesModel.DAL.Consumos
     {
         void Save(Consumo c);
         List<Consumo> GetAll();
+        
     }
 }
