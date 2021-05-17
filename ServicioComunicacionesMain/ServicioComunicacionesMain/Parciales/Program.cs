@@ -10,8 +10,7 @@ namespace ServicioComunicacionesApp
     public partial class Program
     {
         static ILecturasDAL dal = LecturasDALFactory.CreateDal();
-
-        
+  
         static void EnviarMensaje()
         {
             
@@ -35,7 +34,7 @@ namespace ServicioComunicacionesApp
             } while (tipo ==string.Empty);
 
             //***Fromato del mensaje enviado pir el cliente fecha|nro_medidor|tipo***//
-            //********convertidor de formato de fecha*****//
+            //********convertidor de formato de 
             //DateTime fecha = DateTime.ParseExact(edtStartDate.Text, new[] { "YYYYMMDD", "YYMMDD" }, CultureInfo.InvariantCulture, DateTimeStyles.None);
             //tbSubject.Text = fecha.ToString("yy-MM-dd");
 
@@ -45,8 +44,7 @@ namespace ServicioComunicacionesApp
         {
 
         }
-
-
+       
         static bool Menu()
         {
             bool continuar = true;
@@ -60,8 +58,6 @@ namespace ServicioComunicacionesApp
             }
             return continuar;
         }
-
-
 
     }
 }
