@@ -19,22 +19,20 @@ namespace ServicioComunicacionesApp
             int nro_medidor;
             DateTime fecha = DateTime.Now;
 
-            
             do
             {
                 Console.WriteLine("Ingrese fecha:");
-                fecha = Console.ReadLine();
-            } while //(fecha == int.Empty);
-            do
-            {
-                Console.WriteLine("Ingrese numero de medidor:");
-                nro_medidor = Console.ReadLine();
-            } while ();
+                string fechaText = Console.ReadLine().Trim();
+                if (!DateTime.TryParse(fechaText, out fecha))
+                {
+
+                }
+            } while (fecha != DateTime.Now);
             do
             {
                 Console.WriteLine("ingrese tipo de medidor: ");
                 tipo = Console.ReadLine();
-            } while ();
+            } while (tipo ==string.Empty);
 
             //***Fromato del mensaje enviado pir el cliente fecha|nro_medidor|tipo***//
             //********convertidor de formato de fecha*****//

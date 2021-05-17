@@ -10,7 +10,7 @@ namespace ServicioComunicacionesModel.DAL.Consumos
 {
     public class ConsumosDALArchivos : IConsumosDAL
     {
-        private static List<Consumo> medidoresConsumos = new List<Consumo>();
+        public static List<Consumo> medidoresConsumos = new List<Consumo>();
 
         private ConsumosDALArchivos()
         {
@@ -80,6 +80,31 @@ namespace ServicioComunicacionesModel.DAL.Consumos
             {
 
             }
+        }
+
+        public void ObtenerMedidores()
+        {
+            //****Aqui se compone la lista estatica
+            List<int> medidores = new List<int>();
+
+            medidores.Add(1);
+            medidores.Add(2);
+            medidores.Add(3);
+            medidores.Add(4);
+            medidores.Add(5);
+            medidores.Add(6);
+            medidores.Add(7);
+            medidores.Add(8);
+            medidores.Add(9);
+            medidores.Add(10);
+
+            //***este metodo los lee 
+            //##ojo no estoy seguro que vaya aca 
+            foreach (var dato in medidores)
+            {
+                // (dato.ToString());
+            }
+
         }
     }
 }
