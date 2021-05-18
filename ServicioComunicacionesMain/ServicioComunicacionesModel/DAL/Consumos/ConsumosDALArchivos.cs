@@ -82,28 +82,32 @@ namespace ServicioComunicacionesModel.DAL.Consumos
             }
         }
 
-        public void ObtenerMedidores()
+        public class Obtener
         {
-            //****Aqui se compone la lista estatica
-            List<int> medidores = new List<int>();
-
-            medidores.Add(1);
-            medidores.Add(2);
-            medidores.Add(3);
-            medidores.Add(4);
-            medidores.Add(5);
-            medidores.Add(6);
-            medidores.Add(7);
-            medidores.Add(8);
-            medidores.Add(9);
-            medidores.Add(10);
-
-            //***este metodo los lee 
-            //##ojo no estoy seguro que vaya aca 
-            foreach (var dato in medidores)
+            public static void ObtenerMedidores()
             {
-                // (dato.ToString());
+                //****Aqui se compone la lista estatica
+                List<int> medidores = new List<int>();
+
+                medidores.Add(1);
+                medidores.Add(2);
+                medidores.Add(3);
+                medidores.Add(4);
+                medidores.Add(5);
+                medidores.Add(6);
+                medidores.Add(7);
+                medidores.Add(8);
+                medidores.Add(9);
+                medidores.Add(10);
+
+                //***este metodo los lee 
+                //##ojo no estoy seguro que vaya aca 
+                foreach (var dato in medidores)
+                {
+                    // (dato.ToString());
+                }
             }
+           
 
         }
     }
