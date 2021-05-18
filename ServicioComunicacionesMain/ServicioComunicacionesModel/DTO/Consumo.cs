@@ -27,9 +27,9 @@ namespace ServicioComunicacionesModel.DTO
             return Fecha + "|" + NroMedidor + "|" + Tipo;
         }
 
-        public static implicit operator Consumo(Consumo v)
-        {
-            throw new NotImplementedException();
-        }
+       // public static implicit operator Consumo(Consumo v)
+        //{
+          //  throw new NotImplementedException();
+        //}
     }
 }

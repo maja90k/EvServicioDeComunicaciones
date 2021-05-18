@@ -8,7 +8,7 @@ using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SocketUtils
+namespace SocketsUtils
 {
     public class ServerSocket
     {
@@ -33,6 +33,8 @@ namespace SocketUtils
                 return true;
             }catch(Exception ex)
             {
+                Console.WriteLine("Server socket, INICIO ERROR" + ex);
+
                 return false;
             }
 
@@ -43,8 +45,9 @@ namespace SocketUtils
             try
             {          
                 return new MedidorConsumoSocket(this.servidor.Accept());
-            }catch(Exception ex)
+            }catch(IOException ex)
             {
+                Console.WriteLine("Server socket, obtenermedidor ERROR" + ex);
                 return null;
             }
         }

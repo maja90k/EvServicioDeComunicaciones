@@ -5,7 +5,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{C06EDE05-E864-4A3A-8120-E3079E6D697E}</ProjectGuid>
-    <OutputType>Library</OutputType>
+    <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>ServicioComunicacionesMain</RootNamespace>
     <AssemblyName>ServicioComunicacionesMain</AssemblyName>
@@ -30,6 +30,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
@@ -49,17 +52,17 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\ServicioComunicacionesModel\ServicioComunicacionesModel.csproj">
       <Project>{fd213874-0ac6-4f87-8a27-da6cbb23a039}</Project>
       <Name>ServicioComunicacionesModel</Name>
     </ProjectReference>
     <ProjectReference Include="..\SocketsUtils\SocketsUtils.csproj">
-      <Project>{3A916EFF-B125-4A6C-909F-250A1A5C1B9C}</Project>
+      <Project>{3a916eff-b125-4a6c-909f-250a1a5c1b9c}</Project>
       <Name>SocketsUtils</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

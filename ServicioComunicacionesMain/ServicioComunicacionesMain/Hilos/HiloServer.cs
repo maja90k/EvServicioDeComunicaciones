@@ -1,5 +1,4 @@
 ﻿using SocketsUtils;
-using SocketUtils;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,17 +22,16 @@ namespace ServicioComunicacionesApp.Hilos
         {
             this.puerto = puerto;
         }
-
+      
         public void Ejecutar()
         {
             server = new ServerSocket(puerto);
-            Console.WriteLine("Iniciando el sv en el puerto {0}", puerto);
+            Console.WriteLine("Inicio del servidor en el puerto {0}", puerto);
             if (server.Iniciar())
             {
-                Console.WriteLine("Servidor iniciado con exito!");
                 while (true)
                 {
-                    Console.WriteLine("Esperando Clientes");
+                    Console.WriteLine("Esperando algun Cliente...");
                     MedidorConsumoSocket medidorSocket = server.ObtenerMedidor();
                     HiloMedidorConsumo hiloMedidor= new HiloMedidorConsumo(medidorSocket);
                     Thread t = new Thread(new ThreadStart(hiloMedidor.Ejecutar));

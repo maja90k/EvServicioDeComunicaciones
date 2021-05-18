@@ -1,6 +1,7 @@
 ﻿using ServicioComunicacionesApp.Hilos;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -12,14 +13,12 @@ namespace ServicioComunicacionesApp
     {
         static void Main(String[] args)
         {
-            int puerto = Convert.ToInt32(ConfigurationManager.AppSettings["puerto"]);
-            Console.WriteLine("Inicando hilo del servidor");
-            HiloServer hiloServer = new HiloServer(puerto);
-            Thread t = new Thread(new ThreadStart(hiloServer.Ejecutar));
-            t.IsBackground = true;
-            t.Start();
-
-            while (Menu()) ;
+            Console.WriteLine("Iniciando Hilo de server Socket...");
+            //HiloServer hiloServer = new HiloServer(puerto);
+            //Thread t = new Thread(new ThreadStart(hiloServer.Ejecutar));
+            //t.IsBackground = true;
+            //t.Start();
+            while (Menu());
         }
     }
 }

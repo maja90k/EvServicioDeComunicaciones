@@ -36,7 +36,6 @@ namespace ServicioComunicacionesApp.Hilos
                 Console.WriteLine("Ingrese fecha:");
                 string fechaText = Console.ReadLine().Trim();
                 //validacion para fecha erronea
-
                 if (!DateTime.TryParse(fechaText, out fecha))
                 {
 
