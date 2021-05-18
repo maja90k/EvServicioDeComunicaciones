@@ -14,11 +14,13 @@ namespace ServicioComunicacionesApp
         static void Main(String[] args)
         {
             Console.WriteLine("Iniciando Hilo de server Socket...");
-            //HiloServer hiloServer = new HiloServer(puerto);
-            //Thread t = new Thread(new ThreadStart(hiloServer.Ejecutar));
-            //t.IsBackground = true;
-            //t.Start();
-            while (Menu());
+            int puerto = Convert.ToInt32(ConfigurationManager.AppSettings["puerto"]);
+            HiloServer hiloServer = new HiloServer(puerto);
+            Thread t = new Thread(new ThreadStart(hiloServer.Ejecutar));
+            t.IsBackground = true;
+            t.Start();
+            while(Menu());
+            
         }
     }
 }

@@ -22,7 +22,37 @@ namespace ServicioComunicacionesApp.Hilos
         {
             this.puerto = puerto;
         }
-      
+
+        public  void IniciarHiloConsumo()
+        {
+            MedidorConsumoSocket medidorSocket = server.ObtenerMedidor();
+            HiloMedidorConsumo hiloMedidor = new HiloMedidorConsumo(medidorSocket);
+            Thread t = new Thread(new ThreadStart(hiloMedidor.Ejecutar));
+            t.IsBackground = true;
+            t.Start();
+        }
+
+        public bool Menu()
+        {
+            bool continuar = true;
+            Console.WriteLine("Que tipo de Cliente es?");
+            Console.WriteLine("1.Medidor de Consumo");
+            Console.WriteLine("2.Medidor de Trafico");
+            string opcion = Console.ReadLine().Trim();
+            switch (opcion)
+            {
+                case "1":
+                    IniciarHiloConsumo();
+                    break;
+                case "2":
+                    break;
+                default:
+                    ;
+                    break;
+            }
+            return continuar;
+        }
+
         public void Ejecutar()
         {
             server = new ServerSocket(puerto);
@@ -30,17 +60,11 @@ namespace ServicioComunicacionesApp.Hilos
             if (server.Iniciar())
             {
                 while (true)
-                {
+                {                  
                     Console.WriteLine("Esperando algun Cliente...");
-                    MedidorConsumoSocket medidorSocket = server.ObtenerMedidor();
-                    HiloMedidorConsumo hiloMedidor= new HiloMedidorConsumo(medidorSocket);
-                    Thread t = new Thread(new ThreadStart(hiloMedidor.Ejecutar));
-                    t.IsBackground = true;
-                    t.Start();
+                    Menu();
                 }
             }
-        }
-
-
+        }    
     }
 }

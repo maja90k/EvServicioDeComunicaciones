@@ -13,24 +13,18 @@ namespace ServicioComunicacionesApp.Hilos
     {
         private MedidorConsumoSocket medidorConsumoSocket;
         private IConsumosDAL dal = ConsumosDALFactory.CreateDal();
-        // en el mensajeroApp pide los mensajes a crear... leer ese proyecto
 
         public HiloMedidorConsumo(MedidorConsumoSocket medidorConsumoSocket)
         {
             this.medidorConsumoSocket = medidorConsumoSocket;
         }
 
-
         //****aqui el cliente ingresa los datos requeridos fecha|nro_medidor|tipo
         //****posteriormente debe tener un metodo para confirmar la palabra WAIT en la respuesta del servidor
-
         public void Ejecutar()
         {
             string tipo, nro_medidor;
-
             DateTime fecha = DateTime.Now;
-
-
             do
             {
                 Console.WriteLine("Ingrese fecha:");
@@ -41,7 +35,6 @@ namespace ServicioComunicacionesApp.Hilos
 
                 }
             } while (fecha != DateTime.Now);
-
             do
             {
                 Console.WriteLine("Ingrese nro de Medidor: ");
