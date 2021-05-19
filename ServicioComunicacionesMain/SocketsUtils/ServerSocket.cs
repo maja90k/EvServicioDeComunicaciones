@@ -40,12 +40,25 @@ namespace SocketsUtils
 
         }
 
-        public MedidorConsumoSocket ObtenerMedidor()
+        public MedidorConsumoSocket ObtenerMedidorConsumo()
         {
             try
             {          
                 return new MedidorConsumoSocket(this.servidor.Accept());
             }catch(IOException ex)
+            {
+                Console.WriteLine("Server socket, obtenermedidor ERROR" + ex);
+                return null;
+            }
+        }
+
+        public MedidorTransitoSocket ObtenerMedidorTransito()
+        {
+            try
+            {
+                return new MedidorTransitoSocket(this.servidor.Accept());
+            }
+            catch (IOException ex)
             {
                 Console.WriteLine("Server socket, obtenermedidor ERROR" + ex);
                 return null;

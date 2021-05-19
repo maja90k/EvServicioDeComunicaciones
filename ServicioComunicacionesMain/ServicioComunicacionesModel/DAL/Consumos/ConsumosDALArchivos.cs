@@ -84,7 +84,7 @@ namespace ServicioComunicacionesModel.DAL.Consumos
 
         public class Obtener
         {
-            public static void ObtenerMedidores()
+            public static void ObtenerMedidoresConsumo()
             {
                 //****Aqui se compone la lista estatica
                 List<int> medidores = new List<int>();
