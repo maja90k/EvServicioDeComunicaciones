@@ -19,44 +19,42 @@ namespace ServicioComunicacionesApp.Hilos
             this.medidorConsumoSocket = medidorConsumoSocket;
         }
 
-        //****aqui el cliente ingresa los datos requeridos fecha|nro_medidor|tipo
-        //****posteriormente debe tener un metodo para confirmar la palabra WAIT en la respuesta del servidor
+        //Aqui el cliente ingresa los datos requeridos fecha|nro_medidor|tipo
+        //Posteriormente tener un metodo para confirmar la palabra WAIT en la respuesta del servidor
         public void Ejecutar()
         {
-            string tipo, nro_medidor;
-            DateTime fecha = DateTime.Now;
-            do
+            try
             {
-                Console.WriteLine("Ingrese fecha:");
-                string fechaText = Console.ReadLine().Trim();
-                //validacion para fecha erronea
-                if (!DateTime.TryParse(fechaText, out fecha))
+                string tipo, nro_medidor;
+                DateTime fecha = DateTime.Now;
+                Console.WriteLine("Fecha:" + " " + fecha);
+                do
                 {
+                    Console.WriteLine("Ingrese nro de Medidor: ");
+                    nro_medidor = Console.ReadLine().Trim();
+                } while (nro_medidor == string.Empty);
+                do
+                {
+                    Console.WriteLine("Tipo:" );//aqui deberia ir la lista static para ver el tipo de medidores.
+                    tipo = Console.ReadLine();
+                } while (tipo == string.Empty);
 
+                Consumo c = new Consumo()
+                {
+                    Fecha = "fecha",
+                    NroMedidor = nro_medidor,
+                    Tipo = tipo
+                };
+                lock (dal)
+                {
+                    dal.Save(c);
                 }
-            } while (fecha != DateTime.Now);
-            do
-            {
-                Console.WriteLine("Ingrese nro de Medidor: ");
-                nro_medidor = Console.ReadLine().Trim();
-            } while (nro_medidor == string.Empty);
-            do
-            {
-                Console.WriteLine("ingrese tipo de medidor: ");
-                tipo = Console.ReadLine();
-            } while (tipo == string.Empty);
-
-            Consumo c = new Consumo()
-            {
-                Fecha = "fecha",
-                NroMedidor = nro_medidor,
-                Tipo = tipo
-            }; 
-            lock (dal) 
-            {
-                dal.Save(c);
+                medidorConsumoSocket.CerrarConexion();
             }
-            medidorConsumoSocket.CerrarConexion();
+            catch(Exception ex)
+            {
+                Console.WriteLine("Error en el try catch hilo CONSUMO" + ex);
+            }         
         }
     }
 }
