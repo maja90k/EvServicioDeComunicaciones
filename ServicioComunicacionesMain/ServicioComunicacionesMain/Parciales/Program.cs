@@ -1,4 +1,5 @@
 ﻿using ServicioComunicacionesApp.Hilos;
+using ServicioComunicacionesMain.Hilos;
 using ServicioComunicacionesModel.DAL.Lecturas;
 using SocketsUtils;
 using System;
@@ -13,38 +14,34 @@ namespace ServicioComunicacionesApp
 {
     public partial class Program
     {
-        static ILecturasDAL dal = LecturasDALFactory.CreateDal();
+        private ServerSocket server;
+        private static ILecturasDAL dal = LecturasDALFactory.CreateDal();
   
             //Formato del mensaje enviado pir el cliente fecha|nro_medidor|tipo.
             //********convertidor de formato de 
             //DateTime fecha = DateTime.ParseExact(edtStartDate.Text, new[] { "YYYYMMDD", "YYMMDD" }, CultureInfo.InvariantCulture, DateTimeStyles.None);
             //tbSubject.Text = fecha.ToString("yy-MM-dd");
       
+        public static void EjecutarHConsumo()
+        {
+            
+                MedidorConsumoSocket medidorSocket = server.ObtenerMedidorConsumo();
+                HiloMedidorConsumo hiloMedidor = new HiloMedidorConsumo(medidorSocket);
+                Thread t = new Thread(new ThreadStart(hiloMedidor.Ejecutar));
+                t.IsBackground = true;
+                t.Start();
+            
+        }
 
-        static void EnviarRespuesta()
+        public static void EjecutarHTrafico()
         {
-           
+            MedidorTransitoSocket transitoSocket = server.ObtenerMedidorTransito();
+            HiloMedidorTransito hiloTransito = new HiloMedidorTransito(transitoSocket);
+            Thread t = new Thread(new ThreadStart(hiloTransito.Ejecutar));
+            t.IsBackground = true;
+            t.Start();
         }
-        static bool Menu()
-        {
-            bool continuar = true;
-            Console.WriteLine("Que tipo de Cliente es?");
-            Console.WriteLine("1.Medidor de Consumo");
-            Console.WriteLine("2.Medidor de Trafico");
-            string opcion = Console.ReadLine().Trim();
-            switch (opcion)
-            {
-                case "1":
-                    IniciarHiloConsumo();
-                    break;
-                case "2":
-                    break;
-                default:
-                    ;
-                    break;
-            }
-            return continuar;
-        }
+       
 
     }
 }
