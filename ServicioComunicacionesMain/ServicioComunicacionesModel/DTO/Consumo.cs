@@ -11,7 +11,7 @@ namespace ServicioComunicacionesModel.DTO
         private int idMConsumo;
         private string fecha;
         private string tipo;
-        private string nroMedidor;
+        private int nroMedidor;
         private int muestra;
         private string estado;
 

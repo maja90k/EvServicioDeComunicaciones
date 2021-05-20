@@ -51,16 +51,7 @@ namespace ServicioComunicacionesApp.Hilos
                 while (true)
                 {                  
                     Console.WriteLine("Esperando algun Cliente...");
-                    
-                    
-                    //if (server.Menu() == HiloConsumo )
-                    //{
-
-                    //}
-                    //else (server.Menu() == HiloTransito)
-                    //{
-
-                    //}
+                   
                 }
             }
         }    

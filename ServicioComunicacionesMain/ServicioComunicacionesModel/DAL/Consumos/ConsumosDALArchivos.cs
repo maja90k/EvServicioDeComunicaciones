@@ -28,10 +28,7 @@ namespace ServicioComunicacionesModel.DAL.Consumos
 
         private string arconsumo = Directory.GetCurrentDirectory() + Path.DirectorySeparatorChar + "consumos.txt";
 
-        private Consumo FindByNroMedidor(string nroMedidor)
-        {
-            return medidoresConsumos.Find(c => c.NroMedidor == nroMedidor);
-        }
+        public static object Nro { get; private set; }
 
         public List<Consumo> GetAll()
         {
@@ -82,30 +79,22 @@ namespace ServicioComunicacionesModel.DAL.Consumos
             }
         }
 
-        public class Obtener
-        {
-            public static void ObtenerMedidoresConsumo()
+        public static List<Consumo> ObtenerMedidoresConsumo()
             {
                 //****Aqui se compone la lista estatica
-                List<int> medidores = new List<int>();
+                List<Consumo> medidores = new List<Consumo>();
 
-                medidores.Add(1);
-                medidores.Add(2);
-                medidores.Add(3);
-                medidores.Add(4);
-                medidores.Add(5);
-                medidores.Add(6);
-                medidores.Add(7);
-                medidores.Add(8);
-                medidores.Add(9);
-                medidores.Add(10);
+                Consumo consu1 = new Consumo() { NroMedidor = 1111 };
+                Consumo consu2 = new Consumo() { NroMedidor = 1122 };
+                Consumo consu3 = new Consumo() { NroMedidor = 1333 };
+                Consumo consu4 = new Consumo() { NroMedidor = 4444 };
 
-                //***este metodo los lee 
-                //##ojo no estoy seguro que vaya aca 
-                foreach (var dato in medidores)
-                {
-                    // (dato.ToString());
-                }
+            medidores.Add(consu1);
+            medidores.Add(consu2);
+            medidores.Add(consu3);
+            medidores.Add(consu4);
+
+            return medidores;
             }
            
 

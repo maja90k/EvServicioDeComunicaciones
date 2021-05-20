@@ -10,8 +10,10 @@ namespace ServicioComunicacionesModel.DTO
     {
         private int idMTrafico;
         private int cantidad;
+        private int nroMedidor;
 
         public int IdMTrafico { get => idMTrafico; set => idMTrafico = value; }
         public int Cantidad { get => cantidad; set => cantidad = value; }
+        public int NroMedidor { get => nroMedidor; set => nroMedidor = value; }
     }
 }
