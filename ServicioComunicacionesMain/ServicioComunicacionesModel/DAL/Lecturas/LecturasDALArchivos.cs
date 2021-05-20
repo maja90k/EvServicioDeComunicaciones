@@ -37,7 +37,7 @@ namespace ServicioComunicacionesModel.DAL.Lecturas
         public List<Lectura> GetAll()
         {
             List<Lectura> lecturas = new List<Lectura>();
-
+            
             try
             {
 

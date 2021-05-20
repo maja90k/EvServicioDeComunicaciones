@@ -9,8 +9,8 @@ namespace ServicioComunicacionesModel.DAL.Consumos
 {
     public interface IConsumosDAL
     {
-        void Save(Consumo c);
+        void RegistrarLectura(Consumo c);
         List<Consumo> GetAll();
-        
+        List<Consumo> ObtenerMedidoresConsumo();
     }
 }

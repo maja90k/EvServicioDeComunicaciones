@@ -11,12 +11,13 @@ namespace ServicioComunicacionesApp.Hilos
 {
     class HiloMedidorConsumo
     {
-        private MedidorConsumoSocket medidorConsumoSocket;
+        private MedidorConsumoSocket medConSocket;
         private IConsumosDAL dal = ConsumosDALFactory.CreateDal();
+
 
         public HiloMedidorConsumo(MedidorConsumoSocket medidorConsumoSocket)
         {
-            this.medidorConsumoSocket = medidorConsumoSocket;
+            this.medConSocket = medidorConsumoSocket;
         }
 
         //Aqui el cliente ingresa los datos requeridos fecha|nro_medidor|tipo
@@ -25,31 +26,48 @@ namespace ServicioComunicacionesApp.Hilos
         {
             try
             {
+                
                 string tipo, nro_medidor;
-                DateTime fecha = DateTime.Now;
-                Console.WriteLine("Fecha:" + " " + fecha);
+                int idConsumo;
+                string fecha = DateTime.Now.ToString("yyyy-MM-dd-HH-mm-ss");
+                Console.WriteLine("Fecha:" + " | " + fecha);
+                bool respuesta = false;
+
                 do
-                {
-                    Console.WriteLine("Ingrese nro de Medidor: ");
-                    nro_medidor = Console.ReadLine().Trim();
+                {   
+                   nro_medidor = Console.ReadLine().Trim();
+                    lock (dal)
+                    {
+                        dal.ObtenerMedidoresConsumo().ForEach(d =>
+                        {
+                            if (d.NroMedidor == Convert.ToInt32(nro_medidor))
+                            {
+                                respuesta = true;
+                            }
+                        });
+                    }
                 } while (nro_medidor == string.Empty);
                 do
                 {
-                    Console.WriteLine("Tipo:" );//aqui deberia ir la lista static para ver el tipo de medidores.
                     tipo = Console.ReadLine();
                 } while (tipo == string.Empty);
+
+                Console.WriteLine(fecha + "|" + "WAIT");
+                string mensaje = this.medConSocket.Leer().Trim();
+
+                Console.WriteLine( fecha + " | " + tipo);
 
                 Consumo c = new Consumo()
                 {
                     Fecha = "fecha",
-                    NroMedidor = nro_medidor,
+                    NroMedidor = 123,
                     Tipo = tipo
                 };
                 lock (dal)
                 {
-                    dal.Save(c);
+                    dal.RegistrarLectura(c);
                 }
-                medidorConsumoSocket.CerrarConexion();
+                medConSocket.CerrarConexion();
             }
             catch(Exception ex)
             {

@@ -48,7 +48,7 @@ namespace ServicioComunicacionesModel.DAL.Consumos
                             {
                                //el dato fecha se esta capturando como string y no como datetime
                                Fecha = mensjArray[0],
-                               NroMedidor = mensjArray[1],
+                               
                                Tipo = mensjArray[2]
                             };
                             consumos.Add(c);
@@ -64,7 +64,7 @@ namespace ServicioComunicacionesModel.DAL.Consumos
             return consumos;
         }
 
-        public void Save(Consumo c)
+        public void RegistrarLectura(Consumo c)
         {
             try
             {
@@ -79,7 +79,7 @@ namespace ServicioComunicacionesModel.DAL.Consumos
             }
         }
 
-        public static List<Consumo> ObtenerMedidoresConsumo()
+        public List<Consumo> ObtenerMedidoresConsumo()
             {
                 //****Aqui se compone la lista estatica
                 List<Consumo> medidores = new List<Consumo>();
@@ -100,4 +100,4 @@ namespace ServicioComunicacionesModel.DAL.Consumos
 
         }
     }
-}
+

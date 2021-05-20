@@ -9,7 +9,7 @@ namespace ServicioComunicacionesModel.DAL.Lecturas
 {
     public interface ILecturasDAL
     {
-        void Save(Lectura l);
+        void RegistrarLectura(Lectura lectura);
         List<Lectura> GetAll();
     }
 }
