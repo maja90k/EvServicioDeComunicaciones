@@ -42,6 +42,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MedidorConsumoSocket.cs" />
+    <Compile Include="MedidorSocket.cs" />
+    <Compile Include="MedidorTransitoSocket.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ServerSocket.cs" />
   </ItemGroup>

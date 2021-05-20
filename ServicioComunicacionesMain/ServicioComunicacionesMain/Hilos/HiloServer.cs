@@ -1,4 +1,5 @@
-﻿using SocketsUtils;
+﻿using ServicioComunicacionesMain.Hilos;
+using SocketsUtils;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,34 +24,22 @@ namespace ServicioComunicacionesApp.Hilos
             this.puerto = puerto;
         }
 
-        public  void IniciarHiloConsumo()
+        public  void HiloConsumo()
         {
-            MedidorConsumoSocket medidorSocket = server.ObtenerMedidor();
+            MedidorConsumoSocket medidorSocket = server.ObtenerMedidorConsumo();
             HiloMedidorConsumo hiloMedidor = new HiloMedidorConsumo(medidorSocket);
             Thread t = new Thread(new ThreadStart(hiloMedidor.Ejecutar));
             t.IsBackground = true;
             t.Start();
         }
 
-        public bool Menu()
+        public void HiloTransito()
         {
-            bool continuar = true;
-            Console.WriteLine("Que tipo de Cliente es?");
-            Console.WriteLine("1.Medidor de Consumo");
-            Console.WriteLine("2.Medidor de Trafico");
-            string opcion = Console.ReadLine().Trim();
-            switch (opcion)
-            {
-                case "1":
-                    IniciarHiloConsumo();
-                    break;
-                case "2":
-                    break;
-                default:
-                    ;
-                    break;
-            }
-            return continuar;
+            MedidorTransitoSocket transitoSocket = server.ObtenerMedidorTransito();
+            HiloMedidorTransito hiloTransito = new HiloMedidorTransito(transitoSocket);
+            Thread t = new Thread(new ThreadStart(hiloTransito.Ejecutar));
+            t.IsBackground = true;
+            t.Start();
         }
 
         public void Ejecutar()
@@ -62,7 +51,16 @@ namespace ServicioComunicacionesApp.Hilos
                 while (true)
                 {                  
                     Console.WriteLine("Esperando algun Cliente...");
-                    Menu();
+                    
+                    
+                    //if (server.Menu() == HiloConsumo )
+                    //{
+
+                    //}
+                    //else (server.Menu() == HiloTransito)
+                    //{
+
+                    //}
                 }
             }
         }    

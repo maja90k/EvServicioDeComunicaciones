@@ -25,6 +25,7 @@ namespace ServicioComunicacionesMain.Hilos
             Lectura l = new Lectura()
             {
                 Fecha = "fecha",
+               
 
             };
             lock (dal)
