@@ -14,23 +14,7 @@ namespace ServicioComunicacionesApp
     public partial class Program
     {
         static ILecturasDAL dal = LecturasDALFactory.CreateDal();
-
-        static void IniciarHiloServer()
-        {
-          
-        }
-
-        static void IniciarHiloConsumo()
-        {
-            
-        }
-
-        static void IniciarHiloTrafico()
-        {
-
-        }
   
-
             //Formato del mensaje enviado pir el cliente fecha|nro_medidor|tipo.
             //********convertidor de formato de 
             //DateTime fecha = DateTime.ParseExact(edtStartDate.Text, new[] { "YYYYMMDD", "YYMMDD" }, CultureInfo.InvariantCulture, DateTimeStyles.None);

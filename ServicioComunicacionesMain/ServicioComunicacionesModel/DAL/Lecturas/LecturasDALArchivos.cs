@@ -1,4 +1,5 @@
-﻿using ServicioComunicacionesModel.DTO;
+﻿using Newtonsoft.Json;
+using ServicioComunicacionesModel.DTO;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -29,9 +30,10 @@ namespace ServicioComunicacionesModel.DAL.Lecturas
             return instancia;
         }
 
-        private string lectura = Directory.GetCurrentDirectory() +
-            Path.DirectorySeparatorChar + "lectura.json";
+        private string lecturaJson = Directory.GetCurrentDirectory() +
+            Path.DirectorySeparatorChar + "/lectura.txt";
 
+        
         public List<Lectura> GetAll()
         {
             List<Lectura> lecturas = new List<Lectura>();
@@ -46,18 +48,19 @@ namespace ServicioComunicacionesModel.DAL.Lecturas
             return lecturas;
         }
 
-        public void Save(Lectura l)
+        public void RegistrarLectura(Lectura lectura)
         {
             try
             {
-                using(StreamWriter writer = new StreamWriter(lectura,true))
+                using(StreamWriter writer = new StreamWriter(lecturaJson,true))
                 {
-                    writer.WriteLine(l);
+                    string json = JsonConvert.SerializeObject(lectura);
+                    writer.WriteLine(json);
                     writer.Flush();
                 }
             }catch(IOException ex)
             {
-
+                Console.WriteLine("Error de serializacion");
             }
         }
 

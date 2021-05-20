@@ -18,7 +18,7 @@ namespace ServicioComunicacionesModel.DTO
         public int IdMConsumo { get => idMConsumo; set => idMConsumo = value; }
         public int Muestra { get => muestra; set => muestra = value; }
         public string Estado { get => estado; set => estado = value; }
-        public string NroMedidor { get => nroMedidor; set => nroMedidor = value; }
+        public int NroMedidor { get => nroMedidor; set => nroMedidor = value; }
         public string Fecha { get => fecha; set => fecha = value; }
         public string Tipo { get => tipo; set => tipo = value; }
 
