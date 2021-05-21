@@ -63,7 +63,7 @@ namespace ServicioComunicacionesModel.DAL.Traficos
         }
 
         
-        public static List<Trafico> ObtenerMedidoresTransito()
+        public List<Trafico> ObtenerMedidoresTrafico()
         {
             //****Aqui se compone la lista estatica
             List<Trafico> medidorTraf = new List<Trafico>();
@@ -81,9 +81,6 @@ namespace ServicioComunicacionesModel.DAL.Traficos
             return medidorTraf;
         }
 
-        public void Save(Trafico t)
-        {
-            throw new NotImplementedException();
-        }
+        
     }
 }

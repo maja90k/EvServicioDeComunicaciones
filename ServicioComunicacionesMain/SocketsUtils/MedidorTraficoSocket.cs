@@ -8,16 +8,16 @@ using System.Threading.Tasks;
 
 namespace SocketsUtils
 {
-    public class MedidorTransitoSocket
+    public class MedidorTraficoSocket
     {
-        private Socket comCliente;
+        private Socket comTrafico;
         private StreamReader reader;
         private StreamWriter writer;
 
-        public MedidorTransitoSocket (Socket conCliente)
+        public MedidorTraficoSocket (Socket comTrafico)
         {
-            this.comCliente = conCliente;
-            Stream stream = new NetworkStream(this.comCliente);
+            this.comTrafico = comTrafico;
+            Stream stream = new NetworkStream(this.comTrafico);
             this.writer = new StreamWriter(stream);
             this.reader = new StreamReader(stream);
         }
@@ -50,7 +50,7 @@ namespace SocketsUtils
 
         public void CerrarConexion()
         {
-            this.comCliente.Close();
+            this.comTrafico.Close();
         }
     }
 }

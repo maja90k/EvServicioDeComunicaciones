@@ -11,27 +11,6 @@ namespace ServicioComunicacionesApp
 {
     partial class Program
     {
-        static bool Menu()
-        {
-            bool continuar = true;
-            Console.WriteLine("Que tipo de Cliente es?");
-            Console.WriteLine("1.Medidor de Consumo");
-            Console.WriteLine("2.Medidor de Trafico");
-            string opcion = Console.ReadLine().Trim();
-            switch (opcion)
-            {
-                case "1":
-                    EjecutarHConsumo();
-                    break;
-                case "2":
-                    EjecutarHTrafico();
-                    break;
-                default:
-                    ;
-                    break;
-            }
-            return continuar;
-        }
 
         static void Main(String[] args)
         {
@@ -41,8 +20,7 @@ namespace ServicioComunicacionesApp
             Thread t = new Thread(new ThreadStart(hiloServer.Ejecutar));
             t.IsBackground = true;
             t.Start();
-            while(Menu());
-            
+            while (Menu());
         }
     }
 }

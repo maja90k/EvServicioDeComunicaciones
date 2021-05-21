@@ -14,7 +14,10 @@ namespace SocketsUtils
     {
         private int puerto;
         private Socket servidor;
-      
+        private Socket comCliente;
+        private StreamWriter writer;
+        private StreamReader reader;
+
         public ServerSocket(int puerto)
         {
             this.puerto = puerto;
@@ -24,43 +27,89 @@ namespace SocketsUtils
         {
             try
             {
-                //1. Crear un socket
                 this.servidor = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-                //2. Tomar control del puerto            
                 this.servidor.Bind(new IPEndPoint(IPAddress.Any, this.puerto));
-                //3. Definir cuantos clientes atendere
                 this.servidor.Listen(10);
                 return true;
             }catch(Exception ex)
             {
                 Console.WriteLine("Server socket, INICIO ERROR" + ex);
-
                 return false;
             }
 
         }
 
-        public MedidorConsumoSocket ObtenerMedidorConsumo()
+        public bool Escribir(string mensaje)
         {
             try
-            {          
-                return new MedidorConsumoSocket(this.servidor.Accept());
-            }catch(IOException ex)
             {
-                Console.WriteLine("Server socket, obtenermedidor ERROR" + ex);
+                this.writer.WriteLine(mensaje);
+                this.writer.Flush();
+                return true;
+            }
+            catch (IOException ex)
+            {
+                return false;
+            }
+        }
+
+        public string Leer()
+        {
+            try
+            {
+                return this.reader.ReadLine().Trim();
+            }
+            catch (IOException ex)
+            {
                 return null;
             }
         }
 
-        public MedidorTransitoSocket ObtenerMedidorTransito()
+        public void CerrarConexion()
+        {
+            this.comCliente.Close();
+        }
+
+        public bool ObtenerCliente()
         {
             try
             {
-                return new MedidorTransitoSocket(this.servidor.Accept());
+                this.comCliente = this.servidor.Accept();
+                Stream stream = new NetworkStream(this.comCliente);
+                this.writer = new StreamWriter(stream);
+                this.reader = new StreamReader(stream);
+                return true;
+            }
+            catch (Exception ex)
+            {
+
+                return false;
+            }
+        }
+
+
+        public  MedidorConsumoSocket ObtenerMedidorConsumo()
+        {
+            try
+            {
+                return new MedidorConsumoSocket(this.servidor.Accept());
             }
             catch (IOException ex)
             {
-                Console.WriteLine("Server socket, obtenermedidor ERROR" + ex);
+                Console.WriteLine("Server socket, obtener Consumo ERROR" + ex);
+                return null;
+            }
+        }
+
+        public MedidorTraficoSocket ObtenerMedidorTrafico()
+        {
+            try
+            {
+                return new MedidorTraficoSocket(this.servidor.Accept());
+            }
+            catch (IOException ex)
+            {
+                Console.WriteLine("Server socket, obtener Tranfico ERROR" + ex);
                 return null;
             }
         }

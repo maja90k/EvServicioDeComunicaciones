@@ -1,21 +1,20 @@
-﻿using System;
+﻿using ServicioComunicacionesModel.DAL.Lecturas;
+using ServicioComunicacionesModel.DAL.Traficos;
+using ServicioComunicacionesModel.DTO;
+using SocketsUtils;
+using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Text;
-using System.Text.RegularExpressions;
 using System.Threading.Tasks;
-using ServicioComunicacionesModel.DAL.Consumos;
-using ServicioComunicacionesModel.DAL.Lecturas;
-using ServicioComunicacionesModel.DTO;
-using SocketsUtils;
 
-namespace ServicioComunicacionesApp.Hilos
+namespace ServicioComunicacionesMain.Hilos
 {
-    class HiloMedidorConsumo
+    class HiloMedidorTrafico
     {
-        private MedidorConsumoSocket comMedidor;
-        private IConsumosDAL dal = ConsumosDALFactory.CreateDal();
+        private ITraficosDAL dal = TraficosDALFactory.CreateDal();
+        private MedidorTraficoSocket comTrafico;
         private ILecturasDAL Ldal = LecturasDALFactory.CreateDal();
         private static bool valido = false;
         private static string regex = "yyyy-MM-dd-HH-mm-ss";
@@ -23,8 +22,8 @@ namespace ServicioComunicacionesApp.Hilos
         public static bool ValidarFecha(String fechaActual)
         {
             bool res = false;
-            DateTime parsed;    
-            valido = DateTime.TryParseExact(fechaActual, "yyyy-MM-dd-HH-mm-ss",CultureInfo.InvariantCulture,DateTimeStyles.None,out parsed);
+            DateTime parsed;
+            valido = DateTime.TryParseExact(fechaActual, "yyyy-MM-dd-HH-mm-ss", CultureInfo.InvariantCulture, DateTimeStyles.None, out parsed);
             if (valido == false)
             {
                 res = false;
@@ -36,27 +35,27 @@ namespace ServicioComunicacionesApp.Hilos
             return res;
         }
 
-        public HiloMedidorConsumo(MedidorConsumoSocket medidorConsumoSocket)
+        public HiloMedidorTrafico(MedidorTraficoSocket comTrafico)
         {
-            this.comMedidor = medidorConsumoSocket;
+            this.comTrafico = comTrafico;
         }
-        
+
         public void Ejecutar()
         {
-            string tipo, nMedidor;
+            string tipo, nTrafico;
             string fecha = DateTime.Now.ToString("yyyy-MM-dd-HH-mm-ss");
             bool r = false;
 
-            this.comMedidor.Escribir("Fecha");
-            fecha = this.comMedidor.Leer();
+            this.comTrafico.Escribir("Fecha");
+            fecha = this.comTrafico.Leer();
             ValidarFecha(fecha);
 
 
-            this.comMedidor.Escribir("Numero Medidor:");
-            nMedidor = this.comMedidor.Leer();
+            this.comTrafico.Escribir("Numero Medidor:");
+            nTrafico = this.comTrafico.Leer();
             lock (dal)
             {
-                dal.ObtenerMedidoresConsumo().ForEach(d =>
+                dal.ObtenerMedidoresTrafico().ForEach(d =>
                 {
                     if (d.NroMedidor == Convert.ToInt32(nMedidor))
                     {
@@ -72,30 +71,30 @@ namespace ServicioComunicacionesApp.Hilos
                     }
                 });
             }
-        
+
             if (r == true)
             {
-                Console.WriteLine("{0}" + "|" + "{1}" + "|" + "{2}", fecha, nMedidor, tipo);
+                Console.WriteLine("{0}" + "|" + "{1}" + "|" + "{2}", fecha, nTrafico, tipo);
 
-                this.comMedidor.Escribir("Ingrese numero de serie");
-                string nroMedidor = this.comMedidor.Leer().Trim();
+                this.comTrafico.Escribir("Ingrese numero de serie");
+                string nroMedidor = this.comTrafico.Leer().Trim();
 
-                this.comMedidor.Escribir("Ingrese fecha");
-                string fechaEstado = this.comMedidor.Leer().Trim();
+                this.comTrafico.Escribir("Ingrese fecha");
+                string fechaEstado = this.comTrafico.Leer().Trim();
 
                 //tipo
-                this.comMedidor.Escribir("Indique tipo de cliente");
-                string tipo = this.comMedidor.Leer().Trim();
-                
-                this.comMedidor.Escribir("Ingrese valor");
-                string valor = this.comMedidor.Leer().Trim();
+                this.comTrafico.Escribir("Indique tipo de cliente");
+                string tipo = this.comTrafico.Leer().Trim();
 
-                this.comMedidor.Escribir("Ingrese estado");
-                string estado = this.comMedidor.Leer().Trim();
+                this.comTrafico.Escribir("Ingrese valor");
+                string valor = this.comTrafico.Leer().Trim();
+
+                this.comTrafico.Escribir("Ingrese estado");
+                string estado = this.comTrafico.Leer().Trim();
 
                 Console.WriteLine(nroMedidor + "|" + fechaEstado + "|" + tipo + "|" + valor + "|" + estado + "|" + "UPDATE");
-                this.comMedidor.Escribir(nroMedidor + "|" + fechaEstado + "|" + tipo + "|" + valor + "|" + estado + "|" + "UPDATE");
-                this.comMedidor.CerrarConexion();
+                this.comTrafico.Escribir(nroMedidor + "|" + fechaEstado + "|" + tipo + "|" + valor + "|" + estado + "|" + "UPDATE");
+                this.comTrafico.CerrarConexion();
 
 
                 Lectura l = new Lectura()

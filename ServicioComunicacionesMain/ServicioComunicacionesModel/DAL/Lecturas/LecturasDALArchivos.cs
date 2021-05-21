@@ -11,18 +11,14 @@ namespace ServicioComunicacionesModel.DAL.Lecturas
 {
     public class LecturasDALArchivos : ILecturasDAL
     {
-        //patron singleton
-        //*****************//
-        //constructor de la clase
+    
         private LecturasDALArchivos()
         {
 
         }
-        //*****************//
-        //Referencia de la clase
+  
         private static ILecturasDAL instancia;
-        //****************//
-        //metodo de acceso a la instancia
+ 
         public static ILecturasDAL GetInstancia()
         {
             if (instancia == null)

@@ -11,5 +11,7 @@ namespace ServicioComunicacionesModel.DAL.Traficos
     {
         void Save(Trafico t);
         List<Trafico> GetAll();
+        List<Trafico> ObtenerMedidoresTrafico();
+
     }
 }
