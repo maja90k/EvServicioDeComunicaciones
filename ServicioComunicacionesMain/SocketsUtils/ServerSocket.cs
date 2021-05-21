@@ -55,14 +55,7 @@ namespace SocketsUtils
 
         public string Leer()
         {
-            try
-            {
-                return this.reader.ReadLine().Trim();
-            }
-            catch (IOException ex)
-            {
-                return null;
-            }
+            return this.reader.ReadLine().Trim();                    
         }
 
         public void CerrarConexion()
@@ -74,21 +67,22 @@ namespace SocketsUtils
         {
             try
             {
+               
                 this.comCliente = this.servidor.Accept();
                 Stream stream = new NetworkStream(this.comCliente);
                 this.writer = new StreamWriter(stream);
                 this.reader = new StreamReader(stream);
+
                 return true;
             }
             catch (Exception ex)
             {
-
                 return false;
             }
         }
 
 
-        public  MedidorConsumoSocket ObtenerMedidorConsumo()
+        public MedidorConsumoSocket ObtenerMedidorConsumo()
         {
             try
             {

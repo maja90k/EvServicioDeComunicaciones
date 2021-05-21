@@ -14,11 +14,9 @@ namespace ServicioComunicacionesModel.DAL.Consumos
 
         private ConsumosDALArchivos()
         {
-
         }
         
-        private static IConsumosDAL instancia;
-      
+        private static IConsumosDAL instancia;     
         public static IConsumosDAL GetInstancia()
         {
             if (instancia == null)
@@ -27,7 +25,6 @@ namespace ServicioComunicacionesModel.DAL.Consumos
         }
 
         private string arconsumo = Directory.GetCurrentDirectory() + Path.DirectorySeparatorChar + "consumos.txt";
-
         public static object Nro { get; private set; }
 
         public List<Consumo> GetAll()
@@ -53,12 +50,11 @@ namespace ServicioComunicacionesModel.DAL.Consumos
                             };
                             consumos.Add(c);
                         }
-
                     } while (mensj != null);
                 }
             }catch (IOException ex)
             {
-
+                Console.WriteLine(ex);
             }
 
             return consumos;
@@ -75,7 +71,7 @@ namespace ServicioComunicacionesModel.DAL.Consumos
                 }
             }catch (IOException ex)
             {
-
+                Console.WriteLine(ex);
             }
         }
 
@@ -89,15 +85,12 @@ namespace ServicioComunicacionesModel.DAL.Consumos
                 Consumo consu3 = new Consumo() { NroMedidor = 1333 };
                 Consumo consu4 = new Consumo() { NroMedidor = 4444 };
 
-            medidores.Add(consu1);
-            medidores.Add(consu2);
-            medidores.Add(consu3);
-            medidores.Add(consu4);
-
-            return medidores;
-            }
-           
-
+                medidores.Add(consu1);
+                medidores.Add(consu2);
+                medidores.Add(consu3);
+                medidores.Add(consu4);
+                return medidores;
+            }           
         }
     }
 

@@ -40,7 +40,7 @@ namespace ServicioComunicacionesMain.Hilos
             this.comTrafico = comTrafico;
         }
 
-        public void Ejecutar()
+        public void EjecutarTrafico()
         {
             string tipo, nTrafico;
             string fecha = DateTime.Now.ToString("yyyy-MM-dd-HH-mm-ss");
@@ -74,17 +74,17 @@ namespace ServicioComunicacionesMain.Hilos
 
             if (r == true)
             {
-                Console.WriteLine("{0}" + "|" + "{1}" + "|" + "{2}", fecha, nTrafico, tipo);
+                Console.WriteLine("{0}|{1}|{2}", fecha, nTrafico );//falta tipo
 
-                this.comTrafico.Escribir("Ingrese numero de serie");
+                this.comTrafico.Escribir("Ingrese numero de Trafico");
                 string nroMedidor = this.comTrafico.Leer().Trim();      
 
                 this.comTrafico.Escribir("Ingrese fecha");
                 string fechaEstado = this.comTrafico.Leer().Trim();
 
                 //tipo
-                this.comTrafico.Escribir("Indique tipo de cliente");
-                string tipo = this.comTrafico.Leer().Trim();
+               // this.comTrafico.Escribir("Indique tipo de cliente");
+                //string tipo = this.comTrafico.Leer().Trim();
 
                 this.comTrafico.Escribir("Ingrese valor");
                 string valor = this.comTrafico.Leer().Trim();
@@ -92,8 +92,8 @@ namespace ServicioComunicacionesMain.Hilos
                 this.comTrafico.Escribir("Ingrese estado");
                 string estado = this.comTrafico.Leer().Trim();
 
-                Console.WriteLine(nroMedidor + "|" + fechaEstado + "|" + tipo + "|" + valor + "|" + estado + "|" + "UPDATE");
-                this.comTrafico.Escribir(nroMedidor + "|" + fechaEstado + "|" + tipo + "|" + valor + "|" + estado + "|" + "UPDATE");
+                Console.WriteLine(nroMedidor + "|" + fechaEstado + "|" + "|" + valor + "|" + estado + "|" + "UPDATE");//falta tipo entre fechaestado y valor
+                this.comTrafico.Escribir(nroMedidor + "|" + fechaEstado + "|" +  "|" + valor + "|" + estado + "|" + "UPDATE");//falta tipo
 
 
 
@@ -104,7 +104,7 @@ namespace ServicioComunicacionesMain.Hilos
                 {
                     NMedidor = Convert.ToInt32(nroMedidor),
                     Fecha = Convert.ToDateTime(fechaEstado),
-                    Tipo = tipo,
+                    //Tipo = tipo,
                     Valor = valor,
                     Estado = estado
 

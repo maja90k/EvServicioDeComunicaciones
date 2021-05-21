@@ -15,43 +15,34 @@ namespace ServicioComunicacionesApp.Hilos
 
         private int puerto;
         private ServerSocket server;
+        private ServerSocket clienteSocket;
 
         public HiloServer(int puerto)
         {
             this.puerto = puerto;
         }
 
+        public HiloServer(ServerSocket clienteSocket)
+        {
+            this.clienteSocket = clienteSocket;
+        }
 
         public void Ejecutar()
         {
             server = new ServerSocket(puerto);
             Console.WriteLine("Inicio del servidor en el puerto {0}", puerto);
             while (true)
-            {
-                Console.ForegroundColor = ConsoleColor.Yellow;
-                Console.WriteLine("Esperando Clientes...");
-                if (server.ObtenerCliente())
+            {             
+                if (server.Iniciar())
                 {
-                    if (server.Iniciar())
-                    {
-                        Console.ForegroundColor = ConsoleColor.Cyan;
-                        Console.WriteLine("Conexion Establecida con exito!");
-                        string mensaje = "";
-                        while (mensaje.ToLower() != "Chao servidor")
-                        {
-                            mensaje = server.Leer();
-                            Console.WriteLine("C:{0}", mensaje);
-
-                            if (mensaje.ToLower() != "Chao consola")
-                            {
-                                this.server.Escribir("S: {0}", repuesta);
-                                server.Escribir(mensaje);
-                            }
-                        }
-                        server.CerrarConexion();
-                    }
-                   
-                }
+                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    Console.WriteLine("Esperando clientes [][][][][][]");
+                    ServerSocket clienteSocket = server.ObtenerCliente();
+                    HiloServer hiloCliente = new HiloServer(clienteSocket);
+                    Thread t = new Thread(new ThreadStart(hiloCliente.Ejecutar));
+                    t.IsBackground = true;
+                    t.Start();
+                }                               
             }
         }
     }  

@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServicioComunicacionesModel
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SocketsUtils", "SocketsUtils\SocketsUtils.csproj", "{3A916EFF-B125-4A6C-909F-250A1A5C1B9C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cliente", "Cliente\Cliente.csproj", "{2EA76B52-0CBD-4348-AF5A-63C1D18C60D0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{3A916EFF-B125-4A6C-909F-250A1A5C1B9C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3A916EFF-B125-4A6C-909F-250A1A5C1B9C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3A916EFF-B125-4A6C-909F-250A1A5C1B9C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2EA76B52-0CBD-4348-AF5A-63C1D18C60D0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2EA76B52-0CBD-4348-AF5A-63C1D18C60D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2EA76B52-0CBD-4348-AF5A-63C1D18C60D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2EA76B52-0CBD-4348-AF5A-63C1D18C60D0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

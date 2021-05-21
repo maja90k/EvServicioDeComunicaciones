@@ -36,12 +36,12 @@ namespace ServicioComunicacionesApp.Hilos
             return res;
         }
 
-        public HiloMedidorConsumo(MedidorConsumoSocket medidorConsumoSocket)
+        public HiloMedidorConsumo(MedidorConsumoSocket comMedidor)
         {
-            this.comMedidor = medidorConsumoSocket;
+            this.comMedidor = comMedidor;
         }
         
-        public void Ejecutar()
+        public void EjecutarhiloConsumo()
         {
             string tipo, nMedidor;
             string fecha = DateTime.Now.ToString("yyyy-MM-dd-HH-mm-ss");
@@ -60,32 +60,32 @@ namespace ServicioComunicacionesApp.Hilos
                 {
                     if (d.NroMedidor == Convert.ToInt32(nMedidor))
                     {
+                        r = true;
                         Console.WriteLine(fecha + "| WAIT");
                         this.comMedidor.Escribir(fecha + "| WAIT");
-                        r = true;
                     }
                     if (d.NroMedidor != Convert.ToInt32(nMedidor))
                     {
+                        r = false;
                         this.comMedidor.Escribir(fecha + "|" + "ERROR");
                         this.comMedidor.CerrarConexion();
-                        r = false;
                     }
                 });
             }
         
             if (r == true)
             {
-                Console.WriteLine("{0}" + "|" + "{1}" + "|" + "{2}", fecha, nMedidor, tipo);
+                Console.WriteLine("{0}|{1}|{2}", fecha, nMedidor);//falta tipo
 
-                this.comMedidor.Escribir("Ingrese numero de serie");
+                this.comMedidor.Escribir("Ingrese Consumo");
                 string nroMedidor = this.comMedidor.Leer().Trim();
 
                 this.comMedidor.Escribir("Ingrese fecha");
                 string fechaEstado = this.comMedidor.Leer().Trim();
 
                 //tipo
-                this.comMedidor.Escribir("Indique tipo de cliente");
-                string tipo = this.comMedidor.Leer().Trim();
+                //this.comMedidor.Escribir("Indique tipo de cliente");
+                //string tipo = this.comMedidor.Leer().Trim();
                 
                 this.comMedidor.Escribir("Ingrese valor");
                 string valor = this.comMedidor.Leer().Trim();
@@ -93,16 +93,17 @@ namespace ServicioComunicacionesApp.Hilos
                 this.comMedidor.Escribir("Ingrese estado");
                 string estado = this.comMedidor.Leer().Trim();
 
-                Console.WriteLine(nroMedidor + "|" + fechaEstado + "|" + tipo + "|" + valor + "|" + estado + "|" + "UPDATE");
-                this.comMedidor.Escribir(nroMedidor + "|" + fechaEstado + "|" + tipo + "|" + valor + "|" + estado + "|" + "UPDATE");
+                Console.WriteLine(nroMedidor + "|" + fechaEstado + "|" + "|" + valor + "|" + estado + "|" + "UPDATE");//falta tipo
+                this.comMedidor.Escribir(nroMedidor + "|" + fechaEstado + "|"+ "|" + valor + "|" + estado + "|" + "UPDATE");//falta tipo
+
+
                 this.comMedidor.CerrarConexion();
-
-
+          
                 Lectura l = new Lectura()
                 {
                     NMedidor = Convert.ToInt32(nroMedidor),
                     Fecha = Convert.ToDateTime(fechaEstado),
-                    Tipo = tipo,
+                    //Tipo = tipo,
                     Valor = valor,
                     Estado = estado
 

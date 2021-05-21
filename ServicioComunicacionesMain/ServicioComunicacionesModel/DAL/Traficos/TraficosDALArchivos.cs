@@ -11,18 +11,14 @@ namespace ServicioComunicacionesModel.DAL.Traficos
 {
     public class TraficosDALArchivos : ITraficosDAL
     {
-        //patron singleton
-        //*****************//
-        //constructor de la clase
+        
         private TraficosDALArchivos()
         {
 
         }
-        //*****************//
-        //Referencia de la clase
+       
         private static ITraficosDAL instancia;
-        //****************//
-        //metodo de acceso a la instancia
+       
         public static ITraficosDAL GetInstancia()
         {
             if (instancia == null)
@@ -33,8 +29,7 @@ namespace ServicioComunicacionesModel.DAL.Traficos
         private string trafico = Directory.GetCurrentDirectory() + Path.DirectorySeparatorChar + "traficos.txt" ;
 
         public List<Trafico> GetAll()
-        {
-            //throw new NotImplementedException();
+        {            
             List<Trafico> traficos = new List<Trafico>();
             try
             {
@@ -46,7 +41,7 @@ namespace ServicioComunicacionesModel.DAL.Traficos
             return traficos;
         }
 
-        public void Save()
+        public void Save(Trafico t)
         {
             try 
             {
@@ -58,7 +53,7 @@ namespace ServicioComunicacionesModel.DAL.Traficos
 
             }catch(IOException ex)
             {
-                
+                Console.WriteLine(ex);
             }
         }
 
@@ -80,7 +75,6 @@ namespace ServicioComunicacionesModel.DAL.Traficos
 
             return medidorTraf;
         }
-
-        
+       
     }
 }

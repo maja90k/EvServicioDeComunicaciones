@@ -11,7 +11,6 @@ namespace ServicioComunicacionesApp
 {
     partial class Program
     {
-
         static void Main(String[] args)
         {
             Console.WriteLine("Iniciando Hilo de server Socket...");

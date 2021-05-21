@@ -17,7 +17,10 @@ namespace ServicioComunicacionesApp
 
         static ILecturasDAL dal = LecturasDALFactory.CreateDal();
         private static ServerSocket server;
-
+        public void Consumo()
+        {
+            ServerSocket.
+        }
         static bool Menu()
         {
             bool continuar = true;
