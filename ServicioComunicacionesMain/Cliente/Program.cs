@@ -110,7 +110,6 @@ namespace Cliente {
 
                 clienteSocket.Escribir(nroSerCont);
                 Console.WriteLine("-----------------------------------------------------------");
-                Console.WriteLine(                      "'Bienvenido '");
                 Console.WriteLine("-----------------------------------------------------------");
 
                 mensaje = clienteSocket.Leer();
@@ -190,9 +189,6 @@ namespace Cliente {
 
                 mensaje = clienteSocket.Leer();
                 Console.WriteLine("el servidor respondio: {0}", mensaje);
-
-
-
                 String nivell = "";
 
                 do
