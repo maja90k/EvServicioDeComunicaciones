@@ -57,16 +57,16 @@ namespace ServicioComunicacionesMain.Hilos
             {
                 dal.ObtenerMedidoresTrafico().ForEach(d =>
                 {
-                    if (d.NroMedidor == Convert.ToInt32(nMedidor))
+                    if (d.NroMedidor == Convert.ToInt32(nTrafico))
                     {
                         Console.WriteLine(fecha + "| WAIT");
-                        this.comMedidor.Escribir(fecha + "| WAIT");
+                        this.comTrafico.Escribir(fecha + "| WAIT");
                         r = true;
                     }
-                    if (d.NroMedidor != Convert.ToInt32(nMedidor))
+                    if (d.NroMedidor != Convert.ToInt32(nTrafico))
                     {
-                        this.comMedidor.Escribir(fecha + "|" + "ERROR");
-                        this.comMedidor.CerrarConexion();
+                        this.comTrafico.Escribir(fecha + "|" + "ERROR");
+                        this.comTrafico.CerrarConexion();
                         r = false;
                     }
                 });
@@ -77,7 +77,7 @@ namespace ServicioComunicacionesMain.Hilos
                 Console.WriteLine("{0}" + "|" + "{1}" + "|" + "{2}", fecha, nTrafico, tipo);
 
                 this.comTrafico.Escribir("Ingrese numero de serie");
-                string nroMedidor = this.comTrafico.Leer().Trim();
+                string nroMedidor = this.comTrafico.Leer().Trim();      
 
                 this.comTrafico.Escribir("Ingrese fecha");
                 string fechaEstado = this.comTrafico.Leer().Trim();
@@ -94,6 +94,9 @@ namespace ServicioComunicacionesMain.Hilos
 
                 Console.WriteLine(nroMedidor + "|" + fechaEstado + "|" + tipo + "|" + valor + "|" + estado + "|" + "UPDATE");
                 this.comTrafico.Escribir(nroMedidor + "|" + fechaEstado + "|" + tipo + "|" + valor + "|" + estado + "|" + "UPDATE");
+
+
+
                 this.comTrafico.CerrarConexion();
 
 
