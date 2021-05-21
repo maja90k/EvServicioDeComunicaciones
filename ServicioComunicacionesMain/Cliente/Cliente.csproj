@@ -34,6 +34,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -45,8 +46,9 @@
   <ItemGroup>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Socket\MedidorConsumoSocket.cs" />
-    <Compile Include="Socket\MedidorTraficoSocket.cs" />
+    <Compile Include="Sockets\ClienteSocket.cs" />
+    <Compile Include="Sockets\MedidorConsumoSocket.cs" />
+    <Compile Include="Sockets\MedidorTraficoSocket.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
